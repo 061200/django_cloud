@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'sample_db',
-        'USER': 'sample_role',
-        'PASSWORD': '1234567890',
-        'HOST': '127.0.0.1',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'PASSWORD': '12345678',
+        'HOST': 'jamongstone-db.clikhjod1ybs.ap-northeast-2.rds.amazonaws.com',
         'PORT': '5432'
     }
 
