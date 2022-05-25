@@ -18,12 +18,13 @@ from django.contrib import admin
 from django.urls import include, re_path
 from django.urls import path
 
-from cloudzone import views   # views.py 에 작성한 hello 함수 불러오기
+from cloudzone import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('addresses/', views.address_list),
     path('addresses/<int:pk>/', views.address),
+    path('nonsmokings/', views.nonsmoking_list),
     re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

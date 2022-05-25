@@ -1,9 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from rest_framework.response import Response
-from .models import Cloud
+from .models import Cloud, NonSmokingArea
 from rest_framework.views import APIView
-from .serializers import CloudSerializer
+from .serializers import CloudSerializer, NonSmokingSerializer
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
 
@@ -43,3 +43,11 @@ def address(request, pk):
     elif request.method == 'DELETE':
         obj.delete()
         return HttpResponse(status=204)
+
+
+@csrf_exempt
+def nonsmoking_list(request):
+    if request.method == 'GET':
+        query_set = NonSmokingArea.objects.all()
+        serializer = NonSmokingSerializer(query_set, many=True)
+        return JsonResponse(serializer.data, safe=False)
