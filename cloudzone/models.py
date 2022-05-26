@@ -26,7 +26,7 @@ class NonSmokingArea(models.Model):
     address_jibeon = models.CharField(max_length=50)
     manage_office = models.CharField(max_length=50)
     latitude = models.DecimalField(default=0, max_digits=12, decimal_places=8)
-    logitude = models.DecimalField(default=0, max_digits=12, decimal_places=8)
+    longitude = models.DecimalField(default=0, max_digits=12, decimal_places=8)
     image = models.CharField(max_length=50)
     radius = models.FloatField()
 

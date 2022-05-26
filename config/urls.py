@@ -26,5 +26,6 @@ urlpatterns = [
     path('addresses/', views.address_list),
     path('addresses/<int:pk>/', views.address),
     path('nonsmokings/', views.nonsmoking_list),
-    re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    re_path(r"^nonsmokings/(?P<lat>\d+\.\d+)/(?P<lon>\d+\.\d+)$", views.nonsmoking_filtered_list),
+    re_path(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 ]

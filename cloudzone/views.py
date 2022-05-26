@@ -6,6 +6,7 @@ from rest_framework.views import APIView
 from .serializers import CloudSerializer, NonSmokingSerializer
 from rest_framework.parsers import JSONParser
 from django.views.decorators.csrf import csrf_exempt
+from haversine import haversine, Unit
 
 
 @csrf_exempt
@@ -50,4 +51,18 @@ def nonsmoking_list(request):
     if request.method == 'GET':
         query_set = NonSmokingArea.objects.all()
         serializer = NonSmokingSerializer(query_set, many=True)
+        return JsonResponse(serializer.data, safe=False)
+
+
+@csrf_exempt
+def nonsmoking_filtered_list(request, lat, lon):
+    if request.method == 'GET':
+        longitude = float(lon)
+        latitude = float(lat)
+        point = (latitude, longitude)
+        nonsmoking_all = NonSmokingArea.objects.all()
+        nonsmoking_filter = [nonsmoking for nonsmoking in nonsmoking_all
+                             if haversine(point, (nonsmoking.latitude, nonsmoking.longitude)) <= 0.3]
+
+        serializer = NonSmokingSerializer(nonsmoking_filter, many=True)
         return JsonResponse(serializer.data, safe=False)
