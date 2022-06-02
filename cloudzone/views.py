@@ -24,7 +24,6 @@ def address_list(request):
             return JsonResponse(serializer.data, status=201)
         return JsonResponse(serializer.errors, status=400)
 
-
 @csrf_exempt
 def address(request, pk):
     obj = Cloud.objects.get(pk=pk)
