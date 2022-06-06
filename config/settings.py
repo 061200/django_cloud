@@ -15,6 +15,8 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+GDAL_LIBRARY_PATH = "C:/Program Files/QGIS 3.22.4/bin/gdal304.dll"
+GEOS_LIBRARY_PATH = "C:/Program Files/PostgreSQL/14/bin/libgeos_c.dll"
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudzone',
     'rest_framework',
+    'django.contrib.gis'
 ]
 
 REST_FRAMEWORK = {
@@ -86,10 +89,11 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'PASSWORD': '???????',
+        'PASSWORD': '????????',
         'HOST': 'jamongstone-db.clikhjod1ybs.ap-northeast-2.rds.amazonaws.com',
         'PORT': '5432'
     }

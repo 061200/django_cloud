@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Cloud, NonSmokingArea, SmokingArea
+from .models import *
 
 
 class CloudSerializer(serializers.ModelSerializer):
@@ -14,7 +14,16 @@ class NonSmokingSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+
 class SmokingSerializer(serializers.ModelSerializer):
     class Meta:
         model = SmokingArea
         fields = '__all__'
+
+#manner test
+class MannerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Manner
+        fields = '__all__'
+
+

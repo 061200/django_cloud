@@ -3,9 +3,18 @@
 import os
 import sys
 
+# from django.db import connection
+#
+# @csrf_exempt
+# def mannerList(request):
+#     if request.method == 'GET':
+#         query_set = SmokingArea.objects.all()
+#         serializer = SmokingSerializer(query_set, many=True)
+#         return JsonResponse(serializer.data, safe=False)
 
 def main():
     """Run administrative tasks."""
+    #mannerList()
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
     try:
         from django.core.management import execute_from_command_line

@@ -1,4 +1,6 @@
-from django.db import models
+#from django.db import models
+#from django.contrib.gis.db import models
+from django.contrib.gis.db import models
 
 
 class Cloud(models.Model):
@@ -8,7 +10,6 @@ class Cloud(models.Model):
 
     def __str__(self):
         return self.name
-
 
 class NonSmokingArea(models.Model):
     id = id = models.AutoField(primary_key=True)
@@ -53,3 +54,19 @@ class SmokingArea(models.Model):
 
     def __str__(self):
         return self.name
+
+class Manner(models.Model):
+    id = models.IntegerField(primary_key=True)
+    geom = models.GeometryField()  # This field type is a guess.
+    fid = models.FloatField(blank=True, null=True)
+    dn = models.IntegerField(db_column='DN', blank=True, null=True)  # Field name made lowercase.
+
+    class Meta:
+        managed = False
+        db_table = 'cloudzone_mannerrr'
+
+
+
+
+
+
